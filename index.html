@@ -282,85 +282,79 @@
       font-size: 0.7rem;
     }
 
-    /* ─── PROJECTS ─── */
-    .projects-list { display: flex; flex-direction: column; gap: 0; }
+    <!-- PROJECTS -->
+  <section id="projects" class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-list reveal">
 
-    .project-row {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      align-items: start;
-      gap: 3rem;
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--line);
-      cursor: default;
-    }
-    .project-row:first-child { border-top: 1px solid var(--line); }
-    .project-row:hover .project-name { color: var(--accent); }
+      <div class="project-row">
+        <div class="project-index">001</div>
+        <div>
+          <div class="project-name">Wallet Trainer</div>
+          <p class="project-desc">AI-powered trading simulator that lets users practice real market operations with fictional money. Integrates the TradingView API for live market data and AI-generated trade suggestions — so you can learn to trade without the risk.</p>
+          <div class="project-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">TradingView API</span>
+            <span class="chip">AI</span>
+            <span class="chip">Full Stack</span>
+          </div>
+          <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
+            <a href="https://wallet-trainer.onrender.com/" target="_blank" class="project-link-btn">Live Demo ↗</a>
+            <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-status-col">
+          <span class="status-badge badge-live">Live</span>
+        </div>
+      </div>
 
-    .project-index {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      padding-top: 0.3rem;
-      letter-spacing: 0.08em;
-    }
+      <div class="project-row">
+        <div class="project-index">002</div>
+        <div>
+          <div class="project-name">Greenway</div>
+          <p class="project-desc">Full-featured tourism and hotel booking platform focused on Colombia. Features user authentication, hotel & tour listings, real-time reservation system, and a live chat — all backed by a robust Firebase database.</p>
+          <div class="project-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">Real-time DB</span>
+            <span class="chip">Live Chat</span>
+            <span class="chip">Full Stack</span>
+          </div>
+          <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
+            <a href="https://greenway-project.onrender.com/" target="_blank" class="project-link-btn">Live Demo ↗</a>
+            <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-status-col">
+          <span class="status-badge badge-live">Live</span>
+        </div>
+      </div>
 
-    .project-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-      transition: color 0.2s;
-    }
+      <div class="project-row">
+        <div class="project-index">003</div>
+        <div>
+          <div class="project-name">Sense & Goods</div>
+          <p class="project-desc">Full-stack e-commerce platform built for my own clothing brand — from branding to deployment. Includes auth, product catalog, and order management using Python and Firebase.</p>
+          <div class="project-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">HTML / CSS</span>
+            <span class="chip">Full Stack</span>
+            <span class="chip">E-commerce</span>
+          </div>
+          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">View on GitHub ↗</a>
+        </div>
+        <div class="project-status-col">
+          <span class="status-badge badge-wip">In Progress</span>
+        </div>
+      </div>
 
-    .project-desc {
-      color: var(--text);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-weight: 300;
-      max-width: 600px;
-      margin-bottom: 1.2rem;
-    }
-
-    .project-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-    .chip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-      letter-spacing: 0.05em;
-    }
-
-    .project-status-col { padding-top: 0.3rem; text-align: right; }
-
-    .status-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-    }
-    .badge-wip { background: #c8f13515; color: var(--accent); border: 1px solid #c8f13530; }
-    .badge-soon { background: #ffffff08; color: var(--muted); border: 1px solid var(--line); }
-
-    .project-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .project-link-btn:hover { color: var(--accent); }
+    </div>
+  </section>
 
     /* ─── EDUCATION ─── */
     #education { background: var(--bg2); }

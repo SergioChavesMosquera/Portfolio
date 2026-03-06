@@ -5,367 +5,371 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sergio Chaves — Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:       #0d0d0d;
-      --bg2:      #141414;
-      --line:     #2a2a2a;
-      --white:    #f0ede8;
-      --muted:    #6a6a6a;
-      --accent:   #c8f135;
-      --text:     #d4d0cb;
+      --bg:     #0d0d0d;
+      --bg2:    #111111;
+      --line:   #222222;
+      --white:  #f5f5f7;
+      --muted:  #6e6e73;
+      --text:   #c7c7cc;
+      --accent: #2997ff;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    ::selection { background: var(--accent); color: #000; }
+    ::selection { background: var(--accent); color: #fff; }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--line); }
-
+    ::-webkit-scrollbar-thumb { background: #333; }
     a { color: inherit; text-decoration: none; }
 
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 2rem 4rem;
+      padding: 1.5rem 4rem;
       display: flex; justify-content: space-between; align-items: center;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--white);
     }
-    .nav-logo:hover { color: var(--white); }
 
-    .nav-links {
-      display: flex; gap: 2.5rem; list-style: none;
-    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
+      font-weight: 400;
       color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.25s;
+      letter-spacing: -0.01em;
     }
     .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* ─── HERO ─── */
+    /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 0 4rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-main {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-bottom: 4rem;
-      padding-top: 10rem;
-    }
-
-    .hero-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 32px; height: 1px;
-      background: var(--accent);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4.5rem, 11vw, 10rem);
-      font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      margin-bottom: 3rem;
-    }
-    h1 em { font-style: italic; color: var(--muted); }
-
-    .hero-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border-top: 1px solid var(--line);
-      padding: 2rem 0;
-      gap: 2rem;
-    }
-
-    .hero-bottom-item { padding-right: 2rem; }
-    .hero-bottom-item + .hero-bottom-item {
-      border-left: 1px solid var(--line);
-      padding-left: 2rem;
-    }
-
-    .hero-bottom-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-bottom-value {
-      font-size: 0.95rem;
-      color: var(--white);
-      font-weight: 400;
-    }
-
-    .available-dot { display: inline-flex; align-items: center; gap: 0.5rem; }
-    .available-dot::before {
-      content: '';
-      width: 7px; height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: blink 2s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
-    }
-
-    /* ─── SHARED ─── */
-    .section-wrap {
-      padding: 7rem 4rem;
+      padding: 0 4rem 0 4rem;
       border-bottom: 1px solid var(--line);
     }
 
-    .section-header {
+    .hero-inner {
+      padding-bottom: 0;
+      padding-top: 9rem;
+      flex: 1;
       display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 5rem;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
-    .section-number {
+    .hero-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: clamp(4rem, 10vw, 9.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 2.5rem;
+      color: var(--white);
+    }
+
+    h1 .dim { color: var(--muted); font-weight: 300; }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 4rem;
+      max-width: 520px;
+    }
+
+    .hero-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .hero-bar-item {
+      padding: 1.75rem 0;
+      padding-right: 2rem;
+    }
+    .hero-bar-item + .hero-bar-item {
+      padding-left: 2rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .hbi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .hbi-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dot-live {
+      width: 6px; height: 6px;
+      background: #30d158;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; } 50% { opacity:0.3; }
+    }
+
+    /* ── SECTIONS ── */
+    .section-wrap {
+      padding: 6rem 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .sec-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
       color: var(--muted);
       letter-spacing: 0.1em;
     }
 
     h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
+      letter-spacing: -0.03em;
+      line-height: 1;
     }
 
-    /* ─── ABOUT ─── */
+    /* ── ABOUT ── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
       align-items: start;
     }
 
-    .about-lead {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      font-weight: 700;
-      line-height: 1.35;
+    .about-headline {
+      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 1.75rem;
       color: var(--white);
-      margin-bottom: 2rem;
     }
 
-    .about-body {
+    .about-body p {
+      font-size: 0.975rem;
       color: var(--text);
-      font-size: 1rem;
-      line-height: 1.85;
+      line-height: 1.8;
       font-weight: 300;
     }
-    .about-body p + p { margin-top: 1.2rem; }
+    .about-body p + p { margin-top: 1rem; }
 
-    .about-facts { display: flex; flex-direction: column; gap: 0; }
+    .fact-table { display: flex; flex-direction: column; }
 
     .fact-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      padding: 1.4rem 0;
+      align-items: center;
+      padding: 1.1rem 0;
       border-bottom: 1px solid var(--line);
     }
     .fact-row:first-child { border-top: 1px solid var(--line); }
 
-    .fact-key {
+    .fk {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.67rem;
       color: var(--muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
-    .fact-val {
-      font-size: 0.95rem;
+    .fv {
+      font-size: 0.88rem;
+      font-weight: 500;
       color: var(--white);
-      font-weight: 400;
-      text-align: right;
     }
-    .fact-val.accent { color: var(--accent); }
+    .fv.hi { color: var(--accent); }
 
-    /* ─── SKILLS ─── */
+    /* ── SKILLS ── */
     #skills { background: var(--bg2); }
 
-    .skills-columns {
+    .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
     }
 
-    .skill-group {
-      padding: 2.5rem;
+    .skill-col {
+      padding: 2rem 2.5rem;
       border-right: 1px solid var(--line);
     }
-    .skill-group:last-child { border-right: none; }
+    .skill-col:first-child { padding-left: 0; }
+    .skill-col:last-child { border-right: none; }
 
-    .skill-group-label {
+    .skill-cat {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       color: var(--accent);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
-    .skill-list { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; }
-
-    .skill-list li {
-      font-size: 1rem;
-      color: var(--white);
+    .skill-items { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .skill-items li {
+      font-size: 0.95rem;
       font-weight: 400;
+      color: var(--white);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
-    .skill-list li::before {
-      content: '—';
-      color: var(--muted);
+    .skill-items li::before {
+      content: '';
+      width: 3px; height: 3px;
+      background: var(--muted);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PROJECTS ── */
+    .project-list { display: flex; flex-direction: column; }
+
+    .proj {
+      display: grid;
+      grid-template-columns: 56px 1fr 100px;
+      gap: 2.5rem;
+      padding: 2.75rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.15s;
+    }
+    .proj:first-child { border-top: 1px solid var(--line); }
+    .proj:hover .proj-name { color: var(--accent); }
+
+    .proj-idx {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      padding-top: 0.2rem;
     }
 
-    <!-- PROJECTS -->
-  <section id="projects" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">03</span>
-      <h2>Projects</h2>
-    </div>
-    <div class="projects-list reveal">
+    .proj-name {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
 
-      <div class="project-row">
-        <div class="project-index">001</div>
-        <div>
-          <div class="project-name">Wallet Trainer</div>
-          <p class="project-desc">AI-powered trading simulator that lets users practice real market operations with fictional money. Integrates the TradingView API for live market data and AI-generated trade suggestions — so you can learn to trade without the risk.</p>
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Firebase</span>
-            <span class="chip">TradingView API</span>
-            <span class="chip">AI</span>
-            <span class="chip">Full Stack</span>
-          </div>
-          <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
-            <a href="https://wallet-trainer.onrender.com/" target="_blank" class="project-link-btn">Live Demo ↗</a>
-            <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">GitHub ↗</a>
-          </div>
-        </div>
-        <div class="project-status-col">
-          <span class="status-badge badge-live">Live</span>
-        </div>
-      </div>
+    .proj-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      max-width: 580px;
+    }
 
-      <div class="project-row">
-        <div class="project-index">002</div>
-        <div>
-          <div class="project-name">Greenway</div>
-          <p class="project-desc">Full-featured tourism and hotel booking platform focused on Colombia. Features user authentication, hotel & tour listings, real-time reservation system, and a live chat — all backed by a robust Firebase database.</p>
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Firebase</span>
-            <span class="chip">Real-time DB</span>
-            <span class="chip">Live Chat</span>
-            <span class="chip">Full Stack</span>
-          </div>
-          <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
-            <a href="https://greenway-project.onrender.com/" target="_blank" class="project-link-btn">Live Demo ↗</a>
-            <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">GitHub ↗</a>
-          </div>
-        </div>
-        <div class="project-status-col">
-          <span class="status-badge badge-live">Live</span>
-        </div>
-      </div>
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .ptag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
 
-      <div class="project-row">
-        <div class="project-index">003</div>
-        <div>
-          <div class="project-name">Sense & Goods</div>
-          <p class="project-desc">Full-stack e-commerce platform built for my own clothing brand — from branding to deployment. Includes auth, product catalog, and order management using Python and Firebase.</p>
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Firebase</span>
-            <span class="chip">HTML / CSS</span>
-            <span class="chip">Full Stack</span>
-            <span class="chip">E-commerce</span>
-          </div>
-          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">View on GitHub ↗</a>
-        </div>
-        <div class="project-status-col">
-          <span class="status-badge badge-wip">In Progress</span>
-        </div>
-      </div>
+    .proj-links { display: flex; gap: 1.5rem; }
+    .plink {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .plink:hover { color: var(--accent); }
 
-    </div>
-  </section>
+    .proj-badge-col {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-top: 0.25rem;
+    }
 
-    /* ─── EDUCATION ─── */
+    .pbadge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border-radius: 100px;
+    }
+    .pb-live   { background:#30d15815; color:#30d158; border:1px solid #30d15830; }
+    .pb-wip    { background:#2997ff15; color:var(--accent); border:1px solid #2997ff30; }
+
+    /* ── EDUCATION ── */
     #education { background: var(--bg2); }
 
-    .edu-items { display: flex; flex-direction: column; }
-
+    .edu-list { display: flex; flex-direction: column; }
     .edu-row {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 4rem;
-      padding: 3rem 0;
+      grid-template-columns: 180px 1fr;
+      gap: 3.5rem;
+      padding: 2.5rem 0;
       border-bottom: 1px solid var(--line);
       align-items: start;
     }
@@ -373,343 +377,366 @@
 
     .edu-period {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--muted);
-      letter-spacing: 0.06em;
-      padding-top: 0.2rem;
+      letter-spacing: 0.05em;
+      padding-top: 0.25rem;
     }
 
     .edu-degree {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      letter-spacing: -0.01em;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
     }
+    .edu-school { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
+    .edu-note   { font-size: 0.85rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
-    .edu-school { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; }
-
-    .edu-note { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
-
-    /* ─── CONTACT ─── */
-    #contact { background: var(--bg); }
-
-    .contact-inner {
+    /* ── CONTACT ── */
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      gap: 5rem;
       align-items: start;
     }
 
-    .contact-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+    .contact-hl {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 700;
+      letter-spacing: -0.03em;
       line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
-    .contact-left p {
+    .contact-sub {
+      font-size: 0.95rem;
       color: var(--text);
-      font-size: 1rem;
-      line-height: 1.8;
+      line-height: 1.75;
       font-weight: 300;
     }
 
-    .contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 0; }
-
-    .contact-item {
+    .clinks { display: flex; flex-direction: column; }
+    .clink {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.4rem 0;
+      padding: 1.25rem 0;
       border-bottom: 1px solid var(--line);
-      transition: all 0.2s;
-    }
-    .contact-item:first-child { border-top: 1px solid var(--line); }
-    .contact-item:hover .contact-item-label { color: var(--accent); }
-    .contact-item:hover .contact-arrow { transform: translate(3px, -3px); color: var(--accent); }
-
-    .contact-item-label {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      color: var(--white);
-      font-weight: 400;
       transition: color 0.2s;
     }
+    .clink:first-child { border-top: 1px solid var(--line); }
+    .clink:hover .cl-label { color: var(--accent); }
+    .clink:hover .cl-arrow { color: var(--accent); transform: translate(3px,-3px); }
 
-    .contact-item-sub {
+    .cl-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .cl-sub {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--muted);
       display: block;
       margin-top: 0.2rem;
     }
+    .cl-arrow {
+      font-size: 1rem;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
 
-    .contact-arrow { font-size: 1.1rem; color: var(--muted); transition: all 0.2s; }
-
-    /* ─── FOOTER ─── */
+    /* ── FOOTER ── */
     footer {
-      padding: 2rem 4rem;
-      border-top: 1px solid var(--line);
+      padding: 1.75rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-
     footer p {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
     footer span { color: var(--accent); }
 
-    /* ─── REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
       nav, .section-wrap, #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .hero-bottom { grid-template-columns: 1fr; }
-      .hero-bottom-item + .hero-bottom-item { border-left: none; border-top: 1px solid var(--line); padding-left: 0; }
-      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .skills-columns { grid-template-columns: 1fr 1fr; }
-      .skill-group:nth-child(2n) { border-right: none; }
-      .skill-group:nth-child(n+3) { border-top: 1px solid var(--line); }
-      .project-row { grid-template-columns: 40px 1fr; }
-      .project-status-col { display: none; }
-      .edu-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .hero-bar { grid-template-columns: 1fr; }
+      .hero-bar-item + .hero-bar-item { border-left: none; border-top: 1px solid var(--line); padding-left: 0; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .skill-col:nth-child(2) { border-right: none; }
+      .skill-col:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: 2rem; }
+      .proj { grid-template-columns: 36px 1fr; }
+      .proj-badge-col { display: none; }
+      .edu-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .nav-links { display: none; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="nav-logo">sergio chaves</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Sergio Chaves</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-main">
-      <div class="hero-eyebrow">Full Stack Developer · Bogotá, Colombia</div>
-      <h1>Sergio<br><em>Chaves.</em></h1>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Full Stack Developer · Bogotá, Colombia</div>
+    <h1>
+      Sergio<br>
+      <span class="dim">Chaves.</span>
+    </h1>
+    <p class="hero-sub">Student by day, developer by night — building real products with Python, Firebase & the web. Open to remote work from Colombia 🇨🇴</p>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-item">
+      <div class="hbi-label">Status</div>
+      <div class="hbi-value"><span class="dot-live"></span> Open to work</div>
     </div>
-    <div class="hero-bottom">
-      <div class="hero-bottom-item">
-        <div class="hero-bottom-label">Status</div>
-        <div class="hero-bottom-value available-dot">Open to work</div>
-      </div>
-      <div class="hero-bottom-item">
-        <div class="hero-bottom-label">Looking for</div>
-        <div class="hero-bottom-value">Part-time · Freelance · Remote</div>
-      </div>
-      <div class="hero-bottom-item">
-        <div class="hero-bottom-label">Stack</div>
-        <div class="hero-bottom-value">Python · Web · Firebase</div>
-      </div>
+    <div class="hero-bar-item">
+      <div class="hbi-label">Looking for</div>
+      <div class="hbi-value">Part-time · Freelance · Remote</div>
     </div>
-  </section>
+    <div class="hero-bar-item">
+      <div class="hbi-label">Stack</div>
+      <div class="hbi-value">Python · Web · Firebase</div>
+    </div>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">01</span>
-      <h2>About me</h2>
+<!-- ABOUT -->
+<section id="about" class="section-wrap">
+  <div class="sec-head reveal">
+    <span class="sec-num">01</span>
+    <h2>About me</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div>
+      <p class="about-headline">Student by day,<br>developer by night.</p>
+      <div class="about-body">
+        <p>I'm Sergio, an 18-year-old Systems Engineering student at <strong style="color:var(--white);font-weight:500">Universidad Nacional de Colombia</strong> — one of the most rigorous universities in Latin America.</p>
+        <p>I'm passionate about mathematics, problem-solving, and building things for the web. I started coding during my technical degree at SENA and haven't stopped since.</p>
+        <p>My English is strong (B2–C1) and I'm comfortable working with international teams. I'm looking for part-time or freelance remote work that fits around my academic schedule.</p>
+      </div>
     </div>
-    <div class="about-grid reveal">
+    <div class="fact-table">
+      <div class="fact-row"><span class="fk">Age</span><span class="fv">18 years old</span></div>
+      <div class="fact-row"><span class="fk">Location</span><span class="fv">Bogotá, Colombia 🇨🇴</span></div>
+      <div class="fact-row"><span class="fk">English</span><span class="fv">B2 – C1</span></div>
+      <div class="fact-row"><span class="fk">University</span><span class="fv">UNAL · Ing. Sistemas</span></div>
+      <div class="fact-row"><span class="fk">Availability</span><span class="fv hi">Part-time / Freelance</span></div>
+      <div class="fact-row"><span class="fk">GitHub</span><span class="fv">SergioChavesMosquera</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-wrap">
+  <div class="sec-head reveal">
+    <span class="sec-num">02</span>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-col">
+      <div class="skill-cat">Languages</div>
+      <ul class="skill-items">
+        <li>Python</li>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <div class="skill-cat">Tools & Platforms</div>
+      <ul class="skill-items">
+        <li>Firebase</li>
+        <li>Git & GitHub</li>
+        <li>Vercel</li>
+        <li>Notion</li>
+        <li>VS Code</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <div class="skill-cat">Concepts</div>
+      <ul class="skill-items">
+        <li>OOP</li>
+        <li>Databases</li>
+        <li>REST APIs</li>
+        <li>Responsive Design</li>
+        <li>Web Development</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section-wrap">
+  <div class="sec-head reveal">
+    <span class="sec-num">03</span>
+    <h2>Projects</h2>
+  </div>
+  <div class="project-list reveal">
+
+    <div class="proj">
+      <div class="proj-idx">001</div>
       <div>
-        <p class="about-lead">Student by day,<br>developer by night.</p>
-        <div class="about-body">
-          <p>I'm Sergio, an 18-year-old Systems Engineering student at <strong>Universidad Nacional de Colombia</strong> — one of the most rigorous universities in Latin America.</p>
-          <p>I'm passionate about mathematics, problem-solving, and building things for the web. I started coding during my technical degree at SENA and I haven't stopped since.</p>
-          <p>My English is strong (B2–C1) and I'm comfortable working with international teams. I'm looking for part-time or freelance remote work that fits around my academic schedule.</p>
+        <div class="proj-name">Wallet Trainer</div>
+        <p class="proj-desc">AI-powered trading simulator to practice real market operations with fictional money. Integrates TradingView API for live market data and AI-generated trade suggestions — learn to trade without the risk.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span>
+          <span class="ptag">Firebase</span>
+          <span class="ptag">TradingView API</span>
+          <span class="ptag">AI</span>
+          <span class="ptag">Full Stack</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://wallet-trainer.onrender.com/" target="_blank" class="plink">Live Demo ↗</a>
+          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="plink">GitHub ↗</a>
         </div>
       </div>
-      <div class="about-facts">
-        <div class="fact-row"><span class="fact-key">Age</span><span class="fact-val">18 years old</span></div>
-        <div class="fact-row"><span class="fact-key">Location</span><span class="fact-val">Bogotá, Colombia 🇨🇴</span></div>
-        <div class="fact-row"><span class="fact-key">English</span><span class="fact-val">B2 – C1</span></div>
-        <div class="fact-row"><span class="fact-key">University</span><span class="fact-val">UNAL · Ing. Sistemas</span></div>
-        <div class="fact-row"><span class="fact-key">Availability</span><span class="fact-val accent">Part-time / Freelance</span></div>
-        <div class="fact-row"><span class="fact-key">GitHub</span><span class="fact-val">SergioChavesMosquera</span></div>
-      </div>
+      <div class="proj-badge-col"><span class="pbadge pb-live">Live</span></div>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">02</span>
-      <h2>Skills</h2>
-    </div>
-    <div class="skills-columns reveal">
-      <div class="skill-group">
-        <div class="skill-group-label">Languages</div>
-        <ul class="skill-list">
-          <li>Python</li>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-          <li>SQL</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Tools & Platforms</div>
-        <ul class="skill-list">
-          <li>Firebase</li>
-          <li>Git & GitHub</li>
-          <li>Vercel</li>
-          <li>Notion</li>
-          <li>VS Code</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Concepts</div>
-        <ul class="skill-list">
-          <li>OOP</li>
-          <li>Databases</li>
-          <li>REST APIs</li>
-          <li>Responsive Design</li>
-          <li>Web Development</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">03</span>
-      <h2>Projects</h2>
-    </div>
-    <div class="projects-list reveal">
-      <div class="project-row">
-        <div class="project-index">001</div>
-        <div>
-          <div class="project-name">Sense & Goods</div>
-          <p class="project-desc">Full-stack e-commerce platform built for my own clothing brand — from branding to deployment. Includes auth, product catalog, and order management using Python and Firebase.</p>
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Firebase</span>
-            <span class="chip">HTML / CSS</span>
-            <span class="chip">Full Stack</span>
-            <span class="chip">E-commerce</span>
-          </div>
-          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">View on GitHub ↗</a>
-        </div>
-        <div class="project-status-col">
-          <span class="status-badge badge-wip">In Progress</span>
-        </div>
-      </div>
-      <div class="project-row">
-        <div class="project-index">002</div>
-        <div>
-          <div class="project-name">More coming soon</div>
-          <p class="project-desc">Currently building my public GitHub with real projects. New work drops regularly — follow along on GitHub.</p>
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Web</span>
-          </div>
-          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="project-link-btn">GitHub Profile ↗</a>
-        </div>
-        <div class="project-status-col">
-          <span class="status-badge badge-soon">Soon</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">04</span>
-      <h2>Education</h2>
-    </div>
-    <div class="edu-items reveal">
-      <div class="edu-row">
-        <div class="edu-period">2025 → Present</div>
-        <div>
-          <div class="edu-degree">B.Eng. Systems & Computer Engineering</div>
-          <div class="edu-school">Universidad Nacional de Colombia — Bogotá</div>
-          <div class="edu-note">One of the most selective public universities in Latin America. Focus on algorithms, data structures, mathematics, and software engineering.</div>
-        </div>
-      </div>
-      <div class="edu-row">
-        <div class="edu-period">2023 → 2024</div>
-        <div>
-          <div class="edu-degree">Technical Degree in Software Programming</div>
-          <div class="edu-school">SENA — Servicio Nacional de Aprendizaje</div>
-          <div class="edu-note">Covered fundamentals of software development, object-oriented programming, relational databases, and web development. Built my first real-world projects here.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-number">05</span>
-      <h2>Contact</h2>
-    </div>
-    <div class="contact-inner reveal">
-      <div class="contact-left">
-        <p class="contact-headline">Let's build something together.</p>
-        <p>I'm open to part-time roles, freelance projects, and remote opportunities with international teams. If you have something interesting — reach out.</p>
-      </div>
+    <div class="proj">
+      <div class="proj-idx">002</div>
       <div>
-        <div class="contact-links">
-          <a href="mailto:sergiochavesbt@gmail.com" class="contact-item">
-            <div>
-              <div class="contact-item-label">Email</div>
-              <span class="contact-item-sub">sergiochavesbt@gmail.com</span>
-            </div>
-            <span class="contact-arrow">↗</span>
-          </a>
-          <a href="https://www.linkedin.com/in/sergio-gabriel-chaves-mosquera/" target="_blank" class="contact-item">
-            <div>
-              <div class="contact-item-label">LinkedIn</div>
-              <span class="contact-item-sub">sergio-gabriel-chaves-mosquera</span>
-            </div>
-            <span class="contact-arrow">↗</span>
-          </a>
-          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="contact-item">
-            <div>
-              <div class="contact-item-label">GitHub</div>
-              <span class="contact-item-sub">SergioChavesMosquera</span>
-            </div>
-            <span class="contact-arrow">↗</span>
-          </a>
+        <div class="proj-name">Greenway</div>
+        <p class="proj-desc">Full-featured tourism and hotel booking platform focused on Colombia. User auth, hotel & tour listings, real-time reservation system, and live chat — backed by a robust Firebase database.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span>
+          <span class="ptag">Firebase</span>
+          <span class="ptag">Real-time DB</span>
+          <span class="ptag">Live Chat</span>
+          <span class="ptag">Full Stack</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://greenway-project.onrender.com/" target="_blank" class="plink">Live Demo ↗</a>
+          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="plink">GitHub ↗</a>
         </div>
       </div>
+      <div class="proj-badge-col"><span class="pbadge pb-live">Live</span></div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 <span>Sergio Gabriel Chaves Mosquera</span></p>
-    <p>Bogotá, Colombia · Built with <span>HTML · CSS · JS</span></p>
-  </footer>
+    <div class="proj">
+      <div class="proj-idx">003</div>
+      <div>
+        <div class="proj-name">Sense & Goods</div>
+        <p class="proj-desc">Full-stack e-commerce platform for my own clothing brand — from branding to deployment. Auth, product catalog, and order management with Python and Firebase.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span>
+          <span class="ptag">Firebase</span>
+          <span class="ptag">HTML / CSS</span>
+          <span class="ptag">Full Stack</span>
+          <span class="ptag">E-commerce</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/SergioChavesMosquera" target="_blank" class="plink">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="proj-badge-col"><span class="pbadge pb-wip">In Progress</span></div>
+    </div>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section-wrap">
+  <div class="sec-head reveal">
+    <span class="sec-num">04</span>
+    <h2>Education</h2>
+  </div>
+  <div class="edu-list reveal">
+    <div class="edu-row">
+      <div class="edu-period">2025 → Present</div>
+      <div>
+        <div class="edu-degree">B.Eng. Systems & Computer Engineering</div>
+        <div class="edu-school">Universidad Nacional de Colombia — Bogotá</div>
+        <div class="edu-note">One of the most selective public universities in Latin America. Focus on algorithms, data structures, mathematics, and software engineering.</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-period">2023 → 2024</div>
+      <div>
+        <div class="edu-degree">Technical Degree in Software Programming</div>
+        <div class="edu-school">SENA — Servicio Nacional de Aprendizaje</div>
+        <div class="edu-note">Software development fundamentals, OOP, relational databases, and web development. Built my first real-world projects here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-wrap">
+  <div class="sec-head reveal">
+    <span class="sec-num">05</span>
+    <h2>Contact</h2>
+  </div>
+  <div class="contact-grid reveal">
+    <div>
+      <p class="contact-hl">Let's build something together.</p>
+      <p class="contact-sub">I'm open to part-time roles, freelance projects, and remote opportunities with international teams. If you have something interesting — reach out.</p>
+    </div>
+    <div class="clinks">
+      <a href="mailto:sergiochavesbt@gmail.com" class="clink">
+        <div>
+          <div class="cl-label">Email</div>
+          <span class="cl-sub">sergiochavesbt@gmail.com</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/sergio-gabriel-chaves-mosquera/" target="_blank" class="clink">
+        <div>
+          <div class="cl-label">LinkedIn</div>
+          <span class="cl-sub">sergio-gabriel-chaves-mosquera</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://github.com/SergioChavesMosquera" target="_blank" class="clink">
+        <div>
+          <div class="cl-label">GitHub</div>
+          <span class="cl-sub">SergioChavesMosquera</span>
+        </div>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Sergio Gabriel Chaves Mosquera</span> · Bogotá, Colombia</p>
+  <p>Built with <span>HTML · CSS · JS</span></p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
